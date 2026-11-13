@@ -20,14 +20,16 @@
 body{
 	background: var(--body-color);
 	transition: background 0.3s;
+	overflow-x: hidden;
 }
 
 nav{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	gap: 12px;
 	background: var(--nav-color);
-	padding: 5px 5%;
+	padding: 10px 5%;
 	position: sticky;
 	top: 0;
 	z-index: 100;
@@ -48,9 +50,17 @@ nav{
 	display: inline-block;
 }
 
+.nav-left ul{
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 0;
+	margin: 0;
+}
+
 .nav-left ul li img{
 	width: 28px;
-	margin: 0 15px; 
+	margin: 0 8px; 
 }
 
 .nav-user-icon img{
@@ -65,8 +75,8 @@ nav{
 
 .search-box{
 	background: #efefef;
-	width: 350%;
-	border-radius: 40%;
+	width: min(320px, 100%);
+	border-radius: 40px;
 	display: flex;
 	align-items: center;
 	padding: 0 15px;
@@ -102,6 +112,8 @@ nav{
 .container{
 	display: flex;
 	justify-content: space-between;
+	align-items: flex-start;
+	gap: 20px;
 	padding: 13px 5%;
 }
 
@@ -124,8 +136,8 @@ nav{
  }
 
  .main-content{
- 	flex-basis: 47%;
-	margin: 0 15px;
+ 	flex: 1 1 47%;
+	margin: 0;
  }
 
  .imp-links a, .shortcut-links a{
@@ -539,4 +551,99 @@ nav{
 #dark-btn.dark-btn-on{
 	padding-left: 23px;
 	background: #000;
+}
+
+@media (max-width: 900px) {
+	.container {
+		padding: 13px 3%;
+	}
+
+	.left-side-bar {
+		flex-basis: 100%;
+		position: static;
+		order: 1;
+	}
+
+	.main-content {
+		flex-basis: 100%;
+		order: 2;
+	}
+
+	.right-side-bar {
+		display: none;
+	}
+
+	.story-gallery {
+		gap: 8px;
+	}
+
+	.story {
+		flex-basis: calc(20% - 8px);
+		min-height: 150px;
+		padding-top: 0;
+	}
+}
+
+@media (max-width: 640px) {
+	nav {
+		padding: 10px 3%;
+	}
+
+	.nav-left ul {
+		display: none;
+	}
+
+	.nav-right {
+		flex: 1;
+		justify-content: flex-end;
+		gap: 10px;
+	}
+
+	.search-box {
+		width: auto;
+		flex: 1;
+	}
+
+	.nav-user-icon {
+		margin-left: 0;
+	}
+
+	.left-side-bar {
+		display: none;
+	}
+
+	.story-gallery {
+		flex-wrap: wrap;
+	}
+
+	.story {
+		flex-basis: calc(50% - 4px);
+		min-height: 140px;
+	}
+
+	.write-post-container,
+	.post-container {
+		padding: 15px;
+	}
+
+	.post-input-container {
+		padding-left: 0;
+		padding-top: 15px;
+	}
+
+	.add-post-links {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 8px;
+	}
+
+	.add-post-links a {
+		margin-right: 0;
+	}
+
+	.settings-menu {
+		width: calc(100% - 20px);
+		right: 10px;
+		max-width: none;
+	}
 }
